@@ -11,11 +11,16 @@ object OOPBasics extends App {
   person.Person("name")
 
   val writer = new Writer("venky","reddy",1993)
-  val novel = new Novel("Life" , 2022 ,writer)
+  val imposter= new Writer("venky","reddy",1993)
+  val novel = new Novel("Cricket",2022 , writer.FullName())
+  writer.fullName()
+  println(writer.FullName())
 
-  a(writer.fullName())
-  (novel.AuthorAge())
-  (novel.isWrittenBy())
+  novel.AuthorAge()
+  println(novel.authorAge())
+
+  novel.isWrittenBy()
+  println(novel.IsWrittenBy())
 
 }
 
@@ -46,16 +51,25 @@ class Person(name: String , val age: Int = 0) {
 /// First class is implemented then the object
 
 
-class Writer (firstName: String , surname: String ,var DOB: Int) {
+class Writer(firstname: String,surname: String,val DOB: Int) {
 
- def fullName(): Unit = println(firstName +" "+surname)
+  def fullName(): Unit = {
 
+    println(firstname + " " + surname)
+  }
+
+  def FullName(): String = firstname + " " + surname
 }
 
+class Novel(name:String ,yearOfRelease: Int,Author: String){
 
-class Novel(name: String, yearOfRelease: Int , author: Writer) {
+  val writer = new Writer("Venky","reddy",1993)
 
-  def AuthorAge(): Unit=  println(yearOfRelease - author.DOB)
-  def isWrittenBy():Unit =println(author.fullName())
+  def authorAge(): Int = yearOfRelease - writer.DOB
 
+  def AuthorAge(): Unit = println(yearOfRelease - writer.DOB)
+
+  def isWrittenBy(): String = writer.FullName();
+
+  def IsWrittenBy(): Unit = println(writer.fullName())
 }
