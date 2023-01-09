@@ -2,7 +2,9 @@ package ScalaIntroForBeginners
 
 import scala.annotation.tailrec
 
-object Practise extends App{
+object Practise extends App {
+
+
 
   def Factorial(x: Int): Int={
     if (x<=1) 1 else x*Factorial(x-1)
@@ -54,5 +56,19 @@ object Practise extends App{
               fabonacciHelper(5,1)
   }
 
+
+  def sideeffects() = {
+
+    //println("Side effects in action")
+    var x = 10
+    x+=1
+    while(x>=5) {
+      println(x)
+      x-=1
+
+    }
+  }
+
+  sideeffects()
 
 }

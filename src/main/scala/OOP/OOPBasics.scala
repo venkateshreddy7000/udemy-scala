@@ -13,14 +13,31 @@ object OOPBasics extends App {
   val writer = new Writer("venky","reddy",1993)
   val imposter= new Writer("venky","reddy",1993)
   val novel = new Novel("Cricket",2022 , writer.FullName())
+  val counter = new Counter(10)
+
+  counter.currentCount()
+  println(counter.CurrentCount())
+  counter.Increment(counter)
+  counter.Decrement(counter)
+  println(counter.increment(counter))
+  println(counter.decrement(counter))
+
+  println(counter.Increment())
+  println(counter.Decrement())
+
+
   writer.fullName()
   println(writer.FullName())
 
   novel.AuthorAge()
   println(novel.authorAge())
 
-  novel.isWrittenBy()
-  println(novel.IsWrittenBy())
+
+
+  novel.IsWrittenBy()
+  println(novel.isWrittenBy())
+
+
 
 }
 
@@ -72,4 +89,20 @@ class Novel(name:String ,yearOfRelease: Int,Author: String){
   def isWrittenBy(): String = writer.FullName();
 
   def IsWrittenBy(): Unit = println(writer.fullName())
+}
+
+class Counter(val value : Int = 0) {
+
+  def currentCount(): Unit = println(value)
+  def CurrentCount(): Int = value
+
+  def increment(Value: Counter): Int = (value) + 1
+  def decrement(Value: Counter): Int = (value) - 1
+
+  def Increment()= new Counter(value + 1)
+  def Decrement()= new Counter(value - 1)
+
+  def Increment(Value: Counter): Unit = println((value) + 1)
+  def Decrement(Value: Counter): Unit = println((value) - 1)
+
 }
